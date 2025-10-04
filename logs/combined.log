@@ -51,3 +51,11 @@
 {"level":"info","message":"User v11223@gmail.com authenticated successfully","service":"acquistions-api"}
 {"level":"info","message":"User signed in successfully: v11223@gmail.com","service":"acquistions-api"}
 {"level":"info","message":"::1 - - [04/Oct/2025:20:45:03 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 112 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"ip":"::1","level":"warn","message":"Bot request blocked","path":"/health","service":"acquistions-api","userAgent":"PostmanRuntime/7.48.0"}
+{"level":"info","message":"::1 - - [04/Oct/2025:21:28:36 +0000] \"GET /health HTTP/1.1\" 403 56 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"ip":"::1","level":"warn","message":"Bot request blocked","path":"/health","service":"acquistions-api","userAgent":"PostmanRuntime/7.48.0"}
+{"level":"info","message":"::1 - - [04/Oct/2025:21:29:20 +0000] \"GET /health HTTP/1.1\" 403 56 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"ip":"::1","level":"warn","message":"Bot request blocked","path":"/health","service":"acquistions-api","userAgent":"PostmanRuntime/7.48.0"}
+{"level":"info","message":"::1 - - [04/Oct/2025:21:29:23 +0000] \"GET /health HTTP/1.1\" 403 56 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"ip":"::1","level":"warn","message":"Bot request blocked","path":"/health","service":"acquistions-api","userAgent":"PostmanRuntime/7.48.0"}
+{"level":"info","message":"::1 - - [04/Oct/2025:21:32:30 +0000] \"GET /health HTTP/1.1\" 403 68 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
