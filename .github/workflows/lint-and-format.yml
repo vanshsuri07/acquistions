@@ -1,0 +1,63 @@
+name: Lint and Format
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+  pull_request:
+    branches:
+      - main
+      - staging
+
+jobs:
+  lint-and-format:
+    name: ESLint and Prettier Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        id: eslint
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Run Prettier check
+        id: prettier
+        run: npm run format:check
+        continue-on-error: true
+
+      - name: Add annotations for ESLint failures
+        if: steps.eslint.outcome == 'failure'
+        run: |
+          echo "::error::ESLint found issues in the code. Run 'npm run lint:fix' to automatically fix some of them."
+
+      - name: Add annotations for Prettier failures
+        if: steps.prettier.outcome == 'failure'
+        run: |
+          echo "::error::Prettier found formatting issues. Run 'npm run format' to fix formatting."
+
+      - name: Fail workflow if issues found
+        if: steps.eslint.outcome == 'failure' || steps.prettier.outcome == 'failure'
+        run: |
+          echo "::error::Linting or formatting issues detected. Please fix them before merging."
+          echo ""
+          echo "To fix issues locally, run:"
+          echo "  - ESLint: npm run lint:fix"
+          echo "  - Prettier: npm run format"
+          exit 1
+
+      - name: Success message
+        if: steps.eslint.outcome == 'success' && steps.prettier.outcome == 'success'
+        run: echo "✅ All linting and formatting checks passed!"
