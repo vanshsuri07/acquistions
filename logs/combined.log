@@ -106,3 +106,52 @@
 {"level":"error","message":"Error creating user: Error: Failed query: select \"id\", \"name\", \"email\", \"password\", \"role\", \"created_at\", \"updated_at\" from \"users\" where \"users\".\"email\" = $1 limit $2\nparams: as12s12s@gmail.com,1","service":"acquistions-api"}
 {"cause":{"name":"NeonDbError","sourceError":{}},"level":"error","message":"Signup error Failed query: select \"id\", \"name\", \"email\", \"password\", \"role\", \"created_at\", \"updated_at\" from \"users\" where \"users\".\"email\" = $1 limit $2\nparams: as12s12s@gmail.com,1","params":["as12s12s@gmail.com",1],"query":"select \"id\", \"name\", \"email\", \"password\", \"role\", \"created_at\", \"updated_at\" from \"users\" where \"users\".\"email\" = $1 limit $2","service":"acquistions-api","stack":"Error: Failed query: select \"id\", \"name\", \"email\", \"password\", \"role\", \"created_at\", \"updated_at\" from \"users\" where \"users\".\"email\" = $1 limit $2\nparams: as12s12s@gmail.com,1\n    at NeonHttpPreparedQuery.queryWithCache (file:///D:/acquistions/node_modules/drizzle-orm/pg-core/session.js:41:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (file:///D:/acquistions/node_modules/drizzle-orm/neon-http/session.js:45:20)\n    at async createUser (file:///D:/acquistions/src/services/auth.service.js:27:26)\n    at async signup (file:///D:/acquistions/src/controllers/auth.controller.js:21:18)"}
 {"level":"info","message":"::1 - - [05/Oct/2025:07:51:25 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 500 962 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"User as12s12s@gmail.com created successfully","service":"acquistions-api"}
+{"level":"info","message":"User registered successfully: as12s12s@gmail.com","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:07:52:25 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 102 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"error","message":"Error creating user: Error: User with this email already exists","service":"acquistions-api"}
+{"level":"error","message":"Signup error User with this email already exists","service":"acquistions-api","stack":"Error: User with this email already exists\n    at createUser (file:///D:/acquistions/src/services/auth.service.js:33:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async signup (file:///D:/acquistions/src/controllers/auth.controller.js:21:18)"}
+{"level":"info","message":"::1 - - [05/Oct/2025:07:52:38 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 409 32 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"User s@gmail.com created successfully","service":"acquistions-api"}
+{"level":"info","message":"User registered successfully: s@gmail.com","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:07:56:39 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 98 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:16:48 +0000] \"GET /api HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:16:58 +0000] \"GET /api/auth/users HTTP/1.1\" 404 153 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"acquistions-api"}
+{"level":"info","message":"Getting users ...","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:17:18 +0000] \"GET /api/users HTTP/1.1\" 200 775 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:28:30 +0000] \"GET /api/users HTTP/1.1\" 401 60 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:28:34 +0000] \"GET /api/users/1 HTTP/1.1\" 401 60 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:29:05 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 400 92 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:29:17 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 400 92 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"User s@gmail.com authenticated successfully","service":"acquistions-api"}
+{"level":"info","message":"User signed in successfully: s@gmail.com","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:29:37 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 110 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"Getting user by id: 7","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:32:22 +0000] \"GET /api/users/7 HTTP/1.1\" 200 190 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"User 7 deleting user 7","service":"acquistions-api"}
+{"level":"info","message":"User 7 deleted successfully","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:32:48 +0000] \"DELETE /api/users/7 HTTP/1.1\" 200 39 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:35:26 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 400 92 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:35:37 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 400 92 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:35:45 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 400 92 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:35:58 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 400 92 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:36:08 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 400 92 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:36:16 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 400 92 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"User s12321@gmail.com created successfully","service":"acquistions-api"}
+{"level":"info","message":"User registered successfully: s12321@gmail.com","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:36:40 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 104 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:37:52 +0000] \"POST /api/users/sign-in HTTP/1.1\" 404 157 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:38:06 +0000] \"GET /api/users/sign-in HTTP/1.1\" 400 86 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"User s12321@gmail.com authenticated successfully","service":"acquistions-api"}
+{"level":"info","message":"User signed in successfully: s12321@gmail.com","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:38:33 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 116 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"Getting user by id: 8","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:39:44 +0000] \"GET /api/users/8 HTTP/1.1\" 200 196 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"User 8 deleting user 8","service":"acquistions-api"}
+{"level":"info","message":"User 8 deleted successfully","service":"acquistions-api"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:39:55 +0000] \"DELETE /api/users/8 HTTP/1.1\" 200 39 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
+{"level":"info","message":"User 8 deleting user 8","service":"acquistions-api"}
+{"level":"error","message":"Error getting user by id 8: User not found","service":"acquistions-api","stack":"Error: User not found\n    at getUserById (file:///D:/acquistions/src/services/users.service.js:40:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async deleteUser (file:///D:/acquistions/src/services/users.service.js:89:26)\n    at async deleteUser (file:///D:/acquistions/src/controllers/users.controller.js:166:5)"}
+{"level":"error","message":"Error deleting user 8: User not found","service":"acquistions-api","stack":"Error: User not found\n    at getUserById (file:///D:/acquistions/src/services/users.service.js:40:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async deleteUser (file:///D:/acquistions/src/services/users.service.js:89:26)\n    at async deleteUser (file:///D:/acquistions/src/controllers/users.controller.js:166:5)"}
+{"level":"error","message":"Error deleting user: User not found","service":"acquistions-api","stack":"Error: User not found\n    at getUserById (file:///D:/acquistions/src/services/users.service.js:40:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async deleteUser (file:///D:/acquistions/src/services/users.service.js:89:26)\n    at async deleteUser (file:///D:/acquistions/src/controllers/users.controller.js:166:5)"}
+{"level":"info","message":"::1 - - [05/Oct/2025:08:41:35 +0000] \"DELETE /api/users/8 HTTP/1.1\" 404 26 \"-\" \"PostmanRuntime/7.48.0\"","service":"acquistions-api"}
