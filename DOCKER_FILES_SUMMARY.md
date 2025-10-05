@@ -115,6 +115,7 @@ docker-compose -f docker-compose.prod.yml down
    - Get your Project ID and Branch ID
 
 2. **Configure Development Environment**
+
    ```env
    # Edit .env.development
    NEON_API_KEY=neon_api_xxxxx
@@ -149,24 +150,27 @@ docker-compose -f docker-compose.dev.yml exec app npm run db:migrate
 ## 🎯 Key Features
 
 ### Development Mode
+
 ✅ **Neon Local Proxy** - Local database interface to Neon Cloud  
 ✅ **Ephemeral Branches** - Fresh database on every startup  
 ✅ **Auto Cleanup** - Branches deleted automatically when stopped  
 ✅ **Fast Iteration** - No manual branch management  
-✅ **Debug Logging** - Enhanced logging for development  
+✅ **Debug Logging** - Enhanced logging for development
 
 ### Production Mode
+
 ✅ **Direct Neon Cloud Connection** - No proxy overhead  
 ✅ **Security Hardened** - Read-only filesystem, dropped capabilities  
 ✅ **Resource Limits** - CPU and memory constraints  
 ✅ **Health Checks** - Automatic container health monitoring  
-✅ **Production Logging** - Optimized log levels  
+✅ **Production Logging** - Optimized log levels
 
 ---
 
 ## 🔧 Architecture
 
 ### Development Flow
+
 ```
 ┌─────────────┐      ┌──────────────┐      ┌─────────────┐
 │   Your App  │─────▶│  Neon Local  │─────▶│ Neon Cloud  │
@@ -177,6 +181,7 @@ docker-compose -f docker-compose.dev.yml exec app npm run db:migrate
 ```
 
 ### Production Flow
+
 ```
 ┌─────────────┐                        ┌─────────────┐
 │   Your App  │───────────────────────▶│ Neon Cloud  │
@@ -229,6 +234,7 @@ docker-compose -f docker-compose.dev.yml ps
 ## 📞 Support
 
 If you encounter issues, check:
+
 1. `DOCKER_SETUP.md` - Troubleshooting section
 2. Neon Local logs: `docker-compose -f docker-compose.dev.yml logs db`
 3. App logs: `docker-compose -f docker-compose.dev.yml logs app`

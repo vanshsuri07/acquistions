@@ -5,6 +5,7 @@ Get your Acquistions application running in Docker in 5 minutes! 🚀
 ## Development (Neon Local)
 
 ### 1. Prerequisites
+
 - Install Docker Desktop for Windows
 - Get Neon API credentials from [console.neon.tech](https://console.neon.tech)
 
@@ -31,6 +32,7 @@ docker-compose -f docker-compose.dev.yml up --build
 Open your browser: http://localhost:3000
 
 Or use PowerShell:
+
 ```powershell
 curl http://localhost:3000/health
 ```
@@ -77,6 +79,7 @@ docker-compose -f docker-compose.prod.yml down
 ## Common Tasks
 
 ### View Logs
+
 ```powershell
 # Development
 docker-compose -f docker-compose.dev.yml logs -f
@@ -86,6 +89,7 @@ docker-compose -f docker-compose.prod.yml logs -f
 ```
 
 ### Run Database Migrations
+
 ```powershell
 # Development
 docker-compose -f docker-compose.dev.yml exec app npm run db:migrate
@@ -95,6 +99,7 @@ docker-compose -f docker-compose.prod.yml exec app npm run db:migrate
 ```
 
 ### Enter Container Shell
+
 ```powershell
 # Development
 docker-compose -f docker-compose.dev.yml exec app sh
@@ -108,6 +113,7 @@ docker-compose -f docker-compose.prod.yml exec app sh
 ## Troubleshooting
 
 **Issue:** Services won't start
+
 ```powershell
 # Clean everything and try again
 docker-compose -f docker-compose.dev.yml down -v
@@ -116,10 +122,12 @@ docker-compose -f docker-compose.dev.yml up --build
 ```
 
 **Issue:** Port already in use
+
 - Check if another app is using port 3000 or 5432
 - Change ports in docker-compose files
 
 **Issue:** Database connection fails
+
 - Verify your Neon credentials in `.env.development`
 - Check Neon Local logs: `docker-compose -f docker-compose.dev.yml logs db`
 
@@ -128,12 +136,14 @@ docker-compose -f docker-compose.dev.yml up --build
 ## What's Happening?
 
 ### Development Mode
+
 1. **Neon Local** creates a fresh ephemeral database branch
 2. Your **app** connects to it via the local proxy
 3. When you stop, the branch is **automatically deleted**
 4. Next startup = fresh database! Perfect for testing 🎉
 
 ### Production Mode
+
 1. Your **app** connects directly to **Neon Cloud**
 2. No proxy, no ephemeral branches
 3. Uses your real production database

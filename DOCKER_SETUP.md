@@ -20,6 +20,7 @@ This guide provides comprehensive instructions for running the Acquistions appli
 The application supports two distinct deployment modes:
 
 ### Development Mode
+
 - Uses **Neon Local** via Docker
 - Automatically creates **ephemeral database branches**
 - Each container startup gets a fresh database branch
@@ -27,6 +28,7 @@ The application supports two distinct deployment modes:
 - Perfect for local development and testing
 
 ### Production Mode
+
 - Connects directly to **Neon Cloud**
 - Uses your production database URL
 - No local database proxy needed
@@ -37,12 +39,14 @@ The application supports two distinct deployment modes:
 ## Prerequisites
 
 ### Required Software
+
 - **Docker Desktop** (20.10.0 or higher)
   - Windows: [Download Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/)
   - Enable WSL 2 backend if on Windows
 - **Docker Compose** (v2.0 or higher) - Usually included with Docker Desktop
 
 ### Neon Account Setup
+
 1. Create a Neon account at [https://console.neon.tech](https://console.neon.tech)
 2. Create a new project or use an existing one
 3. Get your API credentials:
@@ -107,6 +111,7 @@ curl http://localhost:3000/health
 ```
 
 Expected output:
+
 ```json
 {
   "status": "OK",
@@ -214,32 +219,34 @@ docker-compose -f docker-compose.prod.yml down
 
 ### Application Variables
 
-| Variable | Development | Production | Description |
-|----------|-------------|------------|-------------|
-| `PORT` | 3000 | 3000 | Application port |
-| `NODE_ENV` | development | production | Node environment |
-| `LOG_LEVEL` | debug | info | Logging verbosity |
+| Variable       | Development      | Production     | Description                |
+| -------------- | ---------------- | -------------- | -------------------------- |
+| `PORT`         | 3000             | 3000           | Application port           |
+| `NODE_ENV`     | development      | production     | Node environment           |
+| `LOG_LEVEL`    | debug            | info           | Logging verbosity          |
 | `DATABASE_URL` | Neon Local proxy | Neon Cloud URL | Database connection string |
-| `ARCJET_KEY` | Dev key | Prod key | Arcjet security key |
+| `ARCJET_KEY`   | Dev key          | Prod key       | Arcjet security key        |
 
 ### Neon Local Variables (Development Only)
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `NEON_API_KEY` | Yes | Your Neon API key |
-| `NEON_PROJECT_ID` | Yes | Your Neon project ID |
-| `PARENT_BRANCH_ID` | Yes | Parent branch for ephemeral branches |
-| `DELETE_BRANCH` | No | Delete branch on shutdown (default: true) |
-| `BRANCH_ID` | No | Connect to specific existing branch |
+| Variable           | Required | Description                               |
+| ------------------ | -------- | ----------------------------------------- |
+| `NEON_API_KEY`     | Yes      | Your Neon API key                         |
+| `NEON_PROJECT_ID`  | Yes      | Your Neon project ID                      |
+| `PARENT_BRANCH_ID` | Yes      | Parent branch for ephemeral branches      |
+| `DELETE_BRANCH`    | No       | Delete branch on shutdown (default: true) |
+| `BRANCH_ID`        | No       | Connect to specific existing branch       |
 
 ### Database Connection Strings
 
 **Development (Neon Local):**
+
 ```
 postgresql://neon:npg@db:5432/neondb?sslmode=require
 ```
 
 **Production (Neon Cloud):**
+
 ```
 postgresql://user:password@ep-xxxxx.region.aws.neon.tech/dbname?sslmode=require
 ```
@@ -285,6 +292,7 @@ docker-compose -f docker-compose.dev.yml exec app npm run db:studio
 **Error:** `Failed to create ephemeral branch`
 
 **Solution:**
+
 1. Verify your `NEON_API_KEY` is correct
 2. Check that `NEON_PROJECT_ID` and `PARENT_BRANCH_ID` exist
 3. Ensure your API key has permissions to create branches
@@ -299,6 +307,7 @@ docker-compose -f docker-compose.dev.yml logs db
 **Error:** `ECONNREFUSED` or `connection timeout`
 
 **Solution:**
+
 1. Ensure the `db` service is healthy:
    ```bash
    docker-compose -f docker-compose.dev.yml ps
@@ -315,7 +324,7 @@ docker-compose -f docker-compose.dev.yml logs db
 ```javascript
 // For pg/postgres library
 ssl: {
-  rejectUnauthorized: false
+  rejectUnauthorized: false;
 }
 ```
 
@@ -331,6 +340,7 @@ docker-compose -f docker-compose.dev.yml exec -u root app sh
 ### Issue: Changes not reflected
 
 **Solution:**
+
 ```bash
 # Rebuild the image
 docker-compose -f docker-compose.dev.yml up --build
@@ -363,13 +373,14 @@ To persist a Neon branch per Git branch (useful for feature branches):
 services:
   db:
     environment:
-      DELETE_BRANCH: "false"
+      DELETE_BRANCH: 'false'
     volumes:
       - ./.neon_local/:/tmp/.neon_local
       - ./.git/HEAD:/tmp/.git/HEAD:ro
 ```
 
 Add to `.gitignore`:
+
 ```
 .neon_local/
 ```

@@ -7,12 +7,14 @@
 #### New Functions Added:
 
 **`comparePassword(password, hashedPassword)`**
+
 - Compares a plain text password with a hashed password using bcrypt
 - Returns `true` if passwords match, `false` otherwise
 - Includes error logging for troubleshooting
 - Similar structure to the existing `hashPassword` function
 
 **`authenticateUser({ email, password })`**
+
 - Checks if a user exists in the database by email
 - Throws `'User not found'` error if email doesn't exist
 - Validates the password using `comparePassword`
@@ -21,8 +23,9 @@
 - Includes comprehensive logging for security auditing
 
 #### Bug Fix:
+
 - Fixed missing `await` in `createUser` function (line 27)
-- Changed: `const existingUser = db.select()...` 
+- Changed: `const existingUser = db.select()...`
 - To: `const existingUser = await db.select()...`
 
 ---
@@ -32,6 +35,7 @@
 #### New Functions Added:
 
 **`signin(req, res, next)`**
+
 - Validates request body using `signInSchema` from Zod
 - Calls `authenticateUser` service to verify credentials
 - Generates JWT token on successful authentication
@@ -44,12 +48,14 @@
   - 500: Server errors passed to error handler
 
 **`signout(req, res, next)`**
+
 - Clears the authentication token cookie
 - Returns 200 status with success message
 - Logs successful signout
 - Includes error handling consistent with other functions
 
 #### Additional Fixes:
+
 - Fixed hardcoded user ID in `signup` response (now uses `user.id`)
 - Fixed error message comparison (changed `==` to `===`)
 - Fixed typo in error message string
@@ -69,9 +75,11 @@
 ## API Endpoints
 
 ### **POST /api/auth/sign-up**
+
 Register a new user
 
 **Request:**
+
 ```json
 {
   "name": "John Doe",
@@ -82,6 +90,7 @@ Register a new user
 ```
 
 **Response (201):**
+
 ```json
 {
   "message": "User registered",
@@ -97,9 +106,11 @@ Register a new user
 ---
 
 ### **POST /api/auth/sign-in**
+
 Authenticate an existing user
 
 **Request:**
+
 ```json
 {
   "email": "john@example.com",
@@ -108,6 +119,7 @@ Authenticate an existing user
 ```
 
 **Response (200):**
+
 ```json
 {
   "message": "User signed in successfully",
@@ -123,6 +135,7 @@ Authenticate an existing user
 **Set-Cookie:** `token=<jwt-token>; HttpOnly; Secure; SameSite=Strict; Max-Age=900`
 
 **Error Responses:**
+
 - 400: Validation failed
 - 404: User not found
 - 401: Invalid credentials
@@ -130,11 +143,13 @@ Authenticate an existing user
 ---
 
 ### **POST /api/auth/sign-out**
+
 Log out the current user
 
 **Request:** (No body required)
 
 **Response (200):**
+
 ```json
 {
   "message": "User signed out successfully"

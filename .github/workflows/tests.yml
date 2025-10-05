@@ -50,23 +50,23 @@ jobs:
         run: |
           echo "# Test Results 🧪" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ "${{ steps.tests.outcome }}" == "success" ]; then
             echo "✅ **All tests passed!**" >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ **Some tests failed!**" >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "## Coverage Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ -f "coverage/coverage-summary.json" ]; then
             echo "Coverage report generated successfully. Download the artifact to view full details." >> $GITHUB_STEP_SUMMARY
           else
             echo "⚠️ Coverage report not found." >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Artifacts" >> $GITHUB_STEP_SUMMARY
           echo "- Coverage reports are available as workflow artifacts (30 days retention)" >> $GITHUB_STEP_SUMMARY
